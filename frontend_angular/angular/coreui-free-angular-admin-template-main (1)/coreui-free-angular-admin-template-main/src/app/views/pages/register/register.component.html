@@ -1,0 +1,43 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm #gfg = "ngForm">
+              <h1>Add Account</h1>
+              <p class="text-medium-emphasis">Create new user</p>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input name="username" autoComplete="name" cFormControl placeholder="Username" ngModel/>
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>@</span>
+                <input name="context" autocomplete="Context" cFromControl placeholder="Context" ngModel>
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input name="password" autoComplete="new-password" cFormControl placeholder="Password" type="password" ngModel/>
+              </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input name="password-repeat" autoComplete="new-password-repeat" cFormControl placeholder="Repeat-password" type="password" ngModel/>
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="success" (click) = "addUser(gfg.value['username'], gfg.value['password'], gfg.value['password-repeat'], gfg.value['context'])">Create Account</button>
+                <br>
+                <button cButton color="success" (click) = 'goToDashboard()'>Go back to dashboard</button>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

@@ -1,0 +1,97 @@
+<app-widgets-dropdown></app-widgets-dropdown>
+<c-card class="mb-4">
+  <c-card-body>
+    <c-row>
+      <c-col sm="5">
+        <h4 class="card-title mb-0" id="traffic">Team Value</h4>
+        <div class="small text-medium-emphasis">Last 27 days</div>
+      </c-col>
+      <c-col class="d-none d-md-block" sm="7">
+        <button cButton class="float-end" color="primary">
+          <svg cIcon name="cilCloudDownload"></svg>
+        </button>
+        <form [formGroup]="trafficRadioGroup">
+          <c-button-group class="float-end me-3" role="group">
+            <input
+              class="btn-check"
+              formControlName="trafficRadio"
+              type="radio"
+              value="Day"
+            />
+            <label
+              (click)="setTrafficPeriod('Day')"
+              cButton
+              cFormCheckLabel
+              color="secondary"
+              variant="outline"
+            >Day</label>
+
+           
+          </c-button-group>
+        </form>
+      </c-col>
+    </c-row>
+    <c-chart
+      [data]="mainChart.data"
+      [height]="300"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      [options]="mainChart.options"
+      [type]="mainChart.type"
+    >
+      Main chart
+    </c-chart>
+
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Players</c-card-header>
+      <c-card-body>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+          <thead cTableColor="light">
+            <tr>
+              <th class="text-center">
+                <svg cIcon name="cilPeople"></svg>
+              </th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Position</th>
+              <th>Age</th>
+              <th>Country</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of players;">
+              <td></td>
+              <td>
+                <div>{{ player.firstName }}</div>
+              </td>
+              <td>
+                <div>{{ player.lastName }}</div>
+              </td>
+              <td>
+                <div>{{ player.position }}</div>
+              </td>
+              <td>
+                <div>{{ player.age }}</div>
+              </td>
+              <td>
+                <div>{{ player.country }}</div>
+              </td>
+              <td>
+                <button type="button" cButton color="danger" shape="rounded-pill" (click)='deletePlayer(player.id)'>Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
